@@ -9,7 +9,7 @@ const canvasY = 1000;
 const initialSnake = [[4,10], [4,10]]
 const initialApple = [14,10]
 const scale = 50;
-const timeDelay = 100;
+const timeDelay = 50;
 
 function App() {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -91,16 +91,16 @@ function App() {
     function changeDirection(e: React.KeyboardEvent<HTMLDivElement>) {
         switch (e.key) {
             case 'ArrowLeft':
-                setDirection([-1, 0])
+                if (direction[0] !== 1) setDirection([-1, 0])
                 break
             case 'ArrowUp':
-                setDirection([0, -1])
+                if (direction[1] !== 1) setDirection([0, -1])
                 break
             case 'ArrowRight':
-                setDirection([1, 0])
+                if (direction[0] !== -1) setDirection([1, 0])
                 break
             case 'ArrowDown':
-                setDirection([0, 1])
+                if (direction[1] !== -1) setDirection([0, 1])
                 break
         }
     }
