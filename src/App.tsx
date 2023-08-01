@@ -26,13 +26,13 @@ function App() {
         let fruit = document.getElementById('fruit') as HTMLCanvasElement
         if(canvasRef.current) {
             const canvas = canvasRef.current;
-            const context = canvas.getContext('2d')
-            if (context) {
-                context.setTransform(scale, 0, 0, scale, 0, 0)
-                context.clearRect(0, 0, window.innerWidth, window.innerHeight)
-                context.fillStyle = '#a3d001'
-                snake.forEach(([x,y]) => context.fillRect(x, y, 1, 1))
-                context.drawImage(fruit, apple[0], apple[1], 1, 1);
+            const ctx = canvas.getContext('2d')
+            if (ctx) {
+                ctx.setTransform(scale, 0, 0, scale, 0, 0)
+                ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+                ctx.fillStyle = '#a3d001'
+                snake.forEach(([x,y]) => ctx.fillRect(x, y, 1, 1))
+                ctx.drawImage(fruit, apple[0], apple[1], 1, 1);
             }
         }
     }, [snake, apple, gameOver])
