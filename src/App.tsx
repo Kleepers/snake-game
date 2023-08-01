@@ -62,10 +62,16 @@ function App() {
         return false;
     }
 
+    function generateAppleCoordinates (): number[] {
+        // performance
+        let coord = apple.map(() => Math.floor(Math.random() * canvasX / scale));
+        if (checkCollision(coord)) return generateAppleCoordinates()
+        return coord
+    }
+
     function appleAte(newSnake: number[][]) {
-        let coord = apple.map(() => Math.floor(Math.random() * canvasX / scale))
         if (newSnake[0][0] === apple[0] && newSnake[0][1] === apple[1]) {
-            let newApple = coord
+            let newApple = generateAppleCoordinates()
             setScore(score + 1)
             setApple(newApple)
             return true
